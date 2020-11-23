@@ -59,7 +59,7 @@
                 <p class="card-text"><?php echo $row['Phong'] ?></p>
                 <a href="detailClass.php?id=<?php echo $row['IdLop'] ?>" class="btn btn-primary">Detail</a>
                 <a href="createClass.php?id=<?php echo $row['IdLop'] ?>" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+                <a href="deleteClass.php?id=<?php echo $row['IdLop'] ?>" id="deleClass" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>
@@ -69,5 +69,6 @@
         </div>
     </div>
 </body>
-
+<script src="main.js">
+</script>
 </html>
