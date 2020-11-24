@@ -92,10 +92,7 @@ if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 0) {
                             Danh sách lớp học
                         </div>
                         <div class="row m-2">
-                            <div class="col-sm-12 col-md-6 mb-2">
-                                <a href="TaoLop.php"><button type="button" class="btn btn-outline-primary"><i class="fas fa-plus mr-2"></i>Add</button> </a>
-                                
-                            </div>
+                            
                             <div class="col-sm-12 col-md-6">
                                 <!-- Search form -->
                                 <form class="ml-auto">
@@ -129,9 +126,7 @@ if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 0) {
                                             <div class="card-body">
                                                 <h5 class="card-title"><?php echo $row['TenLop'] ?></h5>
                                                 <p class="card-text"><?php echo $row['Phong'] ?></p>
-                                                <a href="" class="btn btn-primary">Detail</a>
-                                                <a href="SuaLop.php?id=<?php echo $row['IdLop'] ?>" class="btn btn-primary">Edit</a>
-                                                <a onclick="return confirm('Bạn có muốn xóa lớp học này?');" href="XoaLop.php?id=<?php echo $row['IdLop'] ?>" type="submit" class="btn btn-danger btnDelete">Delete</a>
+                                                <a href="XemThanhVien.php?id=<?php echo $row['IdLop'] ?>" class="btn btn-primary">Xem thành viên</a>                        
                                             </div>
                                         </div>
                                     </div>

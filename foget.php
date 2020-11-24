@@ -9,6 +9,17 @@
         <title>Quên mật khẩu</title>
         <link href="styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <?php 
         require 'db.php';
@@ -46,27 +57,7 @@
 
                 
                 
-                // $sql = "select * from nguoidung where Email='$Email'";
-                // $query = mysqli_query($conn, $sql);
-
-                // if (mysqli_num_rows($query) == 1){
-                //     $token = uniqid(md5(time()));
-                //     $sql = "update nguoidung set token = '$token' where email = '$Email'";
-                //     $query = mysqli_query($conn, $sql);
-
-                //     $to = $Email;
-
-                //     $subject = 'Password reset link';
-                //     $massage = "Click http://localhost/QLLH/newPassword.php?Token=$token to reset your password";
-                //     $from = "chientranplus@gmail.com";
-                //     $headers = "From:" . $from;
-                //     if (mail($to, $subject, $massage, $headers)) {
-                //     $success = "Link lấy lại mật khẩu đã gửi đến mail của bạn.";
-                //     }
-                // }
-                // else {
-                //     $error = "Email chưa đăng kí.";
-                // }
+               
             }
         }
     ?>
@@ -112,8 +103,6 @@
                 </main>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="main.js"></script>
     </body>
 </html>

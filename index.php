@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    require 'db.php';
+    if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 2) {
+        header('location:login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,15 +25,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<style>
-    .card img {
-        max-width: 100%;
-        height: 200px;
-    }
-    .card {
-        margin-bottom: 10px;
-    }
-</style>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -43,32 +43,17 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="row">
-    <?php
-        require_once('connection.php');
-        $sql = "SELECT * FROM class";
-        $result = $conn->query($sql);
-        while($row = $result->fetch_assoc()){
-    ?>
-    <div class="col-xl-4 col-lg-6">
-        <div class="card h-100" style="width: 18rem;">
-            <img class="card-img-top" src="<?php echo $row['HinhLop'] ?>" alt="Hinh lop">
+
+    <div class="container mt-3">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="http://placehold.it/286x180.png" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title"><?php  echo $row['TenLop'] ?></h5>
-                <p class="card-text"><?php echo $row['Phong'] ?></p>
-                <a href="detailClass.php?id=<?php echo $row['IdLop'] ?>" class="btn btn-primary">Detail</a>
-                <a href="createClass.php?id=<?php echo $row['IdLop'] ?>" class="btn btn-primary">Edit</a>
-                <a href="deleteClass.php?id=<?php echo $row['IdLop'] ?>" id="deleClass" class="btn btn-danger">Delete</a>
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
     </div>
-    <?php
-        }
-    ?>
-        </div>
-    </div>
 </body>
-<script src="main.js">
-</script>
+
 </html>

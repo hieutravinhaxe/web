@@ -89,11 +89,11 @@ if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 0) {
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
-                            Danh sách lớp học
+                            Danh sách thành viên 
                         </div>
                         <div class="row m-2">
                             <div class="col-sm-12 col-md-6 mb-2">
-                                <a href="TaoLop.php"><button type="button" class="btn btn-outline-primary"><i class="fas fa-plus mr-2"></i>Add</button> </a>
+                                <a href=""><button type="button" class="btn btn-outline-primary"><i class="fas fa-plus mr-2"></i>Add</button> </a>
                                 
                             </div>
                             <div class="col-sm-12 col-md-6">
@@ -109,9 +109,11 @@ if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 0) {
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="row h-100">
+                            <div class="list ">
+                                
                                 <?php
-                                $sql = "SELECT * FROM Lop";
+                                $IdLop = $_GET['id'];
+                                $sql = "SELECT * FROM thanhvien where IdLop=$IdLop and agree=1";
 
                                 $conn = open_database();
                                 $stmt = $conn->prepare($sql);
@@ -122,22 +124,23 @@ if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 0) {
 
                                 $result = $stmt->get_result();
                                 while ($row = $result->fetch_assoc()) {
+                                    $user = $row['IdNguoiDung'];
+                                    $sql1 = "SELECT * FROM nguoidung where IdNguoiDung = $user";
+                                    $conn = open_database();
+                                    $stmt1 = $conn->prepare($sql1);
+                                    if (!$stmt1->execute()) {
+                                        die("Query error:" . $stmt->error);
+                                    }
+                                    $result1 = $stmt1->get_result();
+                                    $row1 = $result1->fetch_assoc();
                                 ?>
-                                    <div class="col-xs-12 col-md-6 col-xl-4 mb-4">
-                                        <div class="card h-100" style="width: 18rem;">
-                                            <img class="card-img-top" src="<?php echo $row['HinhLop'] ?>" alt="Hinh lop">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><?php echo $row['TenLop'] ?></h5>
-                                                <p class="card-text"><?php echo $row['Phong'] ?></p>
-                                                <a href="" class="btn btn-primary">Detail</a>
-                                                <a href="SuaLop.php?id=<?php echo $row['IdLop'] ?>" class="btn btn-primary">Edit</a>
-                                                <a onclick="return confirm('Bạn có muốn xóa lớp học này?');" href="XoaLop.php?id=<?php echo $row['IdLop'] ?>" type="submit" class="btn btn-danger btnDelete">Delete</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="card bg-light text-dark">
+                                    <div class="card-body tv"><?php echo $row1['Username'] ?><button onclick="return confirm('Bạn có muốn xóa thành viên này?');" href="XoaThanhVien.php?IdLop=<?php echo $IdLop ?>&IdNguoiDung=<?php echo $user ?>" type="button" class="btn btn-danger" id="deleteTV">Xóa</button></div>
+                                </div>
                                 <?php
                                 }
                                 ?>
+                               
                             </div>
                         </div>
 

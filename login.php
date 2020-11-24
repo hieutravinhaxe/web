@@ -2,7 +2,15 @@
     session_start();
     require_once 'db.php';
     if (isset($_SESSION['Username'])) {
-        header('location:index.php');
+        if ($_SESSION['Role'] == 0) {
+            header('location:admin/dashboard.php');
+        }
+        else if ($_SESSION['Role'] == 1) {
+            header('location:Giaovien.php');
+        }
+        else if ($_SESSION['Role'] == 2) {
+            header('location:index.php');
+        }
     }
 ?>
 

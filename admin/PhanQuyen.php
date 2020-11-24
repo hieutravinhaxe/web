@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['Username']) && $_SESSION['Role'] != 0) {
-    header('location:../login.php');
+if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 0) {
+    header('location: ../login.php');
 }
 ?>
 <!DOCTYPE html>

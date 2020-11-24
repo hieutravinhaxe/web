@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2020 lúc 06:48 AM
--- Phiên bản máy phục vụ: 10.4.11-MariaDB
--- Phiên bản PHP: 7.2.28
+-- Host: 127.0.0.1
+-- Generation Time: Nov 24, 2020 at 06:19 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `qllh`
+-- Database: `qllh`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `baiviet`
+-- Table structure for table `baiviet`
 --
 
 CREATE TABLE `baiviet` (
@@ -40,7 +39,7 @@ CREATE TABLE `baiviet` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `binhluan`
+-- Table structure for table `binhluan`
 --
 
 CREATE TABLE `binhluan` (
@@ -53,32 +52,31 @@ CREATE TABLE `binhluan` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `lop`
+-- Table structure for table `lop`
 --
 
 CREATE TABLE `lop` (
   `IdLop` int(11) NOT NULL,
   `TenLop` varchar(255) NOT NULL,
   `Phong` varchar(10) NOT NULL,
-  `IdMon` int(11) NOT NULL,
-  `HinhLop` varchar(255) NOT NULL
+  `Mon` varchar(50) NOT NULL,
+  `HinhLop` varchar(255) NOT NULL,
+  `MaLop` int(11) NOT NULL,
+  `IdGV` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lop`
+--
+
+INSERT INTO `lop` (`IdLop`, `TenLop`, `Phong`, `Mon`, `HinhLop`, `MaLop`, `IdGV`) VALUES
+(5, 'web1', 'A0102', 'web', 'uploads/Screenshot (17).png', 17495, 0),
+(7, 'web2', 'A0103', '0', 'uploads/Screenshot (6).png', 69401, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `monhoc`
---
-
-CREATE TABLE `monhoc` (
-  `IdMon` int(11) NOT NULL,
-  `TenMon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `nguoidung`
+-- Table structure for table `nguoidung`
 --
 
 CREATE TABLE `nguoidung` (
@@ -93,122 +91,117 @@ CREATE TABLE `nguoidung` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `nguoidung`
+-- Dumping data for table `nguoidung`
 --
 
 INSERT INTO `nguoidung` (`IdNguoiDung`, `Name`, `Username`, `Password`, `Email`, `Birth`, `Role`, `Token`) VALUES
-(5, 'Trần Minh Chiến', 'chientran', '$2y$10$dpfwvkqad2WfXLoRBgVVl.B4MDpdbnidm9f8fDxoVXcYD6Ryb8D96', 'chientranplus@gmail.com', '2000-01-01', 0, ''),
+(5, 'Trần Minh Chiến', 'chientran', '$2y$10$dpfwvkqad2WfXLoRBgVVl.B4MDpdbnidm9f8fDxoVXcYD6Ryb8D96', 'chientranplus@gmail.com', '2000-01-01', 2, ''),
 (6, 'Trần Minh Chiến', 'chien', '$2y$10$1qjIHKWKWXPqLmJBKeQXv.jW6hF4XxJRici/bBZ0EWI4z3VjG7OjK', 'chientranplus@gmail.co', '2000-01-01', 0, ''),
-(7, 'admin', 'admin', '$2y$10$q1iZmtvdzyn335FsURkUPu/OD2qYeJ6CLzcvaPgQ6TAkigAqCu7zO', 'chientran@gmail.com', '2000-01-01', 0, '');
+(7, 'admin', 'admin', '$2y$10$q1iZmtvdzyn335FsURkUPu/OD2qYeJ6CLzcvaPgQ6TAkigAqCu7zO', 'chientran@gmail.com', '2000-01-01', 0, ''),
+(8, 'Nguyễn Ngọc Hiếu', 'hieutravinh', '$2y$10$5zq02aND3SThNn2cHdGE3.op1tqJqGZO.J2/x90I7.msma6a3pXBG', 'hieutravinhaxe@gmail.com', '2000-01-01', 2, ''),
+(9, 'Nguyễn Ngọc', 'hieutravi', '$2y$10$DlNuvZ5wd.pno7fLImzEOe5xe8lLr.iRxzfbwlR7Zs1Mo1aoeKirK', 'hieutravinhaxe02@gmail.com', '2000-01-01', 2, ''),
+(10, 'Nguyễn Ngọc H', 'hieuhieungoc', '$2y$10$wDB0yewfl/p59K9kpJ1Y0.zPJFa66G6HUyGmwkPF1m1lIXnbdndtG', 'hieutravinhaxe03@gmail.com', '2000-01-01', 2, ''),
+(11, 'Nguyễn Ngọc Hiếu', 'ngocngoc', '$2y$10$Su01hSFZ6n5aUj4GPTjzkuz5F3rDaGTYNIYxiUHcq2OsKuzr8b9Vm', 'hieutravinh10@gmail.com', '2000-01-01', 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `thanhvien`
+-- Table structure for table `thanhvien`
 --
 
 CREATE TABLE `thanhvien` (
   `IdLop` int(11) NOT NULL,
-  `IdNguoiDung` int(11) NOT NULL
+  `IdNguoiDung` int(11) NOT NULL,
+  `agree` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Dumping data for table `thanhvien`
+--
+
+INSERT INTO `thanhvien` (`IdLop`, `IdNguoiDung`, `agree`) VALUES
+(5, 5, 0),
+(5, 8, 1);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `baiviet`
+-- Indexes for table `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD PRIMARY KEY (`IdBaiViet`),
   ADD KEY `IdLop` (`IdLop`);
 
 --
--- Chỉ mục cho bảng `binhluan`
+-- Indexes for table `binhluan`
 --
 ALTER TABLE `binhluan`
   ADD KEY `IdBaiViet` (`IdBaiViet`),
   ADD KEY `IdNguoiDung` (`IdNguoiDung`);
 
 --
--- Chỉ mục cho bảng `lop`
+-- Indexes for table `lop`
 --
 ALTER TABLE `lop`
   ADD PRIMARY KEY (`IdLop`),
-  ADD KEY `IdMon` (`IdMon`);
+  ADD UNIQUE KEY `IdLop` (`IdLop`);
 
 --
--- Chỉ mục cho bảng `monhoc`
---
-ALTER TABLE `monhoc`
-  ADD PRIMARY KEY (`IdMon`);
-
---
--- Chỉ mục cho bảng `nguoidung`
+-- Indexes for table `nguoidung`
 --
 ALTER TABLE `nguoidung`
   ADD PRIMARY KEY (`IdNguoiDung`);
 
 --
--- Chỉ mục cho bảng `thanhvien`
+-- Indexes for table `thanhvien`
 --
 ALTER TABLE `thanhvien`
   ADD KEY `IdLop` (`IdLop`),
   ADD KEY `IdNguoiDung` (`IdNguoiDung`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `baiviet`
+-- AUTO_INCREMENT for table `baiviet`
 --
 ALTER TABLE `baiviet`
   MODIFY `IdBaiViet` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `lop`
+-- AUTO_INCREMENT for table `lop`
 --
 ALTER TABLE `lop`
-  MODIFY `IdLop` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdLop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `monhoc`
---
-ALTER TABLE `monhoc`
-  MODIFY `IdMon` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `nguoidung`
+-- AUTO_INCREMENT for table `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  MODIFY `IdNguoiDung` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `IdNguoiDung` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `baiviet`
+-- Constraints for table `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD CONSTRAINT `baiviet_ibfk_1` FOREIGN KEY (`IdLop`) REFERENCES `lop` (`IdLop`);
 
 --
--- Các ràng buộc cho bảng `binhluan`
+-- Constraints for table `binhluan`
 --
 ALTER TABLE `binhluan`
   ADD CONSTRAINT `binhluan_ibfk_1` FOREIGN KEY (`IdBaiViet`) REFERENCES `baiviet` (`IdBaiViet`),
   ADD CONSTRAINT `binhluan_ibfk_2` FOREIGN KEY (`IdNguoiDung`) REFERENCES `nguoidung` (`IdNguoiDung`);
 
 --
--- Các ràng buộc cho bảng `lop`
---
-ALTER TABLE `lop`
-  ADD CONSTRAINT `lop_ibfk_1` FOREIGN KEY (`IdMon`) REFERENCES `monhoc` (`IdMon`);
-
---
--- Các ràng buộc cho bảng `thanhvien`
+-- Constraints for table `thanhvien`
 --
 ALTER TABLE `thanhvien`
   ADD CONSTRAINT `thanhvien_ibfk_1` FOREIGN KEY (`IdLop`) REFERENCES `lop` (`IdLop`),
