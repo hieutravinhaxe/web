@@ -56,8 +56,9 @@
             <div class="col-xl-3 col-md-6">
                 <div class="left">
                     <ul class="list-group">
-                        <li class="list-group-item text-primary"><a href="">Thông báo</a></li>
+                        <li class="list-group-item text-primary"><a href="detailClass.php?id=<?php echo $id?>">Thông báo</a></li>
                         <li class="list-group-item text-primary"><a href="assignment.php?id=<?php echo $id?>">Bài tập</a></li>
+                        <li class="list-group-item text-primary"><a href="list.php?id=<?php echo $id?>">Danh sách lớp</a></li>
                     </ul>
                 </div>
             </div>
